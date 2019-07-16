@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  publisher: MyString
+  title: MyString
+  url: MyString
+  name: MyString
+  checkout-date: 2019-07-06
+  return-date: 2019-07-06
+
+two:
+  publisher: MyString
+  title: MyString
+  url: MyString
+  name: MyString
+  checkout-date: 2019-07-06
+  return-date: 2019-07-06
