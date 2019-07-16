@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 2019_07_12_134648) do
     t.date "checkout_date"
     t.date "return_date"
     t.string "libraryable_type"
-    t.integer "libraryable_id"
+    t.bigint "libraryable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["libraryable_type", "libraryable_id"], name: "index_library_items_on_libraryable_type_and_libraryable_id"
     t.index ["user_id"], name: "index_library_items_on_user_id"
   end
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_134648) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "library_item_id"
+    t.bigint "user_id"
+    t.bigint "library_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["library_item_id"], name: "index_reservations_on_library_item_id"
@@ -86,10 +86,13 @@ ActiveRecord::Schema.define(version: 2019_07_12_134648) do
     t.string "username"
     t.string "address"
     t.string "userable_type"
-    t.integer "userable_id"
+    t.bigint "userable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
   end
 
+  add_foreign_key "library_items", "users"
+  add_foreign_key "reservations", "library_items"
+  add_foreign_key "reservations", "users"
 end
